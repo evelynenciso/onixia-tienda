@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../estilos/style.css">
+      <title>ONIXIA | Contacto</title>
+  </head>
+  <body>
+
+    <header>
+      <div class="brand">
+        <a href="../index.html">
+          <img src="../img/OnixiaCirculo.png" alt="logo principal" class="logo">
+        </a>
+        <span class="brand-name">ONIXIA</span>
+      </div>
+
+      <input type="checkbox" id="menu-check" class="menu-check">
+      <label for="menu-check" class="menu-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </label>
+
+      <nav class="nav-container">
+        <ul class="nav">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="https://www.google.com" target="_blank">Ir a Google</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contacto">
+        <h2>Contactanos</h2>
+        <form class="formulario" action="https://formspree.io/f/xeenwanb" method="POST">
+
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" required></textarea>
+
+          <label class="checkbox">
+            <input type="checkbox" name="terminos" required>
+            Acepto los términos y condiciones
+          </label>
+
+          <button type="submit">Enviar</button>
+
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 ONIXIA. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+
+
+</html>
