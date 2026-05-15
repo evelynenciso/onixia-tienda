@@ -231,7 +231,7 @@ header {
 /* ------------------------------------------- /*
  /* CLASE 5*/
 
-.recursos {
+.colecion {
     width: 90%;
     /* ocupa el 90% del ancho disponible */
     max-width: 1100px;
@@ -246,18 +246,19 @@ header {
     border-radius: 20px;
 }
 
-.titulo-recursos {
+.titulo-colecion {
     color: #4a644296; /* o el color que quieras */
     background: transparent; /* 🔥 clave */
     padding: 0; /* opcional, para evitar efecto caja */
 }
-.contenido-recursos {
+.contenido-colecion {
     background-color: #f5f5f5;
     padding: 2rem;
     border-radius: 10px;
+    
 }
 
-.texto-recursos {
+.texto-colecion {
     text-align: center;
     font-size: 1.1rem;
     margin-bottom: 2rem;
@@ -272,10 +273,11 @@ header {
 }
 
 .tarjeta {
-    display: inline-block;
+   display: flex;
+   flex-direction: column;
     vertical-align: top;
-    width: 30%;
-    /* cada tarjeta ocupa el 30% del contenedor */
+    width: 30%; /* cada tarjeta ocupa el 30% del contenedor */
+    object-fit: cover;  /* 👈 recorta sin deformar */
     min-width: 250px;
     margin: 1%;
     padding: 1.5rem;
@@ -284,6 +286,7 @@ header {
     overflow: hidden;
     transition: transform 0.3s;
     border-radius: 20px;
+
 }
 .tarjeta:hover {
     transform: translateY(-10px);
@@ -292,8 +295,8 @@ header {
 /* LO NUEVO EN TARJETA*/
 .tarjeta img {
     width: 100%; /* VA 100% */
-    max-width: 200px;  /* límite para que no sea gigante */
-    height: auto;         /* mantiene proporción */
+    max-width: 250px;  /* límite para que no sea gigante( es el ancho) */
+    height: 350px;         /* mantiene proporción(es el largo) */
     display: block;
     margin: 0 auto 10px;  /* centra la imagen */
     border-radius: 10px;
@@ -393,13 +396,13 @@ button {
 }
 
 /* Ejemplo de unidades flexibles */
-.recursos h2 {
+.colecion h2 {
     font-size: 4vw;
     
 }
 
 @media (max-width: 768px) {
-    .recursos h2 {
+    .colecion h2 {
         font-size: 2rem;
     }
 
@@ -500,7 +503,8 @@ footer p {
 }
 
 .footer-tienda {
-  background: #abd69e96;  
+  background: #4a644296;
+;  
   color: white;
   text-align: center;
   padding: 15px;
