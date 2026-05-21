@@ -68,10 +68,13 @@ header {
     position: relative;
 }
 
-.nav-container {
+/* nav centrado solo en desktop */
+@media (min-width: 769px) {
+  .nav-container {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
 }
 
 .logo {
@@ -166,11 +169,7 @@ header {
     background-color: #444;
 }
 
-@media (max-width: 768px) {
-  .formulario {
-    width: 95%;
-  }
-}
+
 
 /* ===== MENU RESPONSIVE SIN JS ===== */
 
@@ -199,33 +198,7 @@ header {
     background: #abd69e96;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
 
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-container {
-        display: none;
-        width: 100%;
-    }
-
-    .menu-check:checked ~ .nav-container {
-        display: block;
-    }
-
-    .nav {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 15px;
-    }
-
-    .nav-container {
-        position: static;
-        transform: none;
-    }
-}
 
 
 /* ------------------------------------------- /*
@@ -401,18 +374,7 @@ button {
     
 }
 
-@media (max-width: 768px) {
-    .colecion h2 {
-        font-size: 2rem;
-    }
 
-    .tarjeta {
-        display: block;
-        width: 90%;
-        margin: 15px auto;
-        height: auto;
-    }
-}
 /* ------------------------------------------- */
 /* HERO HOME */
 .hero {
@@ -582,9 +544,111 @@ footer p {
   color: #aaa;
 }
 
-/* RESPONSIVE */
+
+
+/* TABLET - 768px */
 @media (max-width: 768px) {
-  .grid-resenas {
-    grid-template-columns: 1fr;
+
+  /* MENÚ */
+  header { flex-wrap: wrap; }
+  .menu-toggle { display: flex; }
+
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s;
+    z-index: 98;
   }
+
+  .menu-check:checked ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+    width: 220px;
+    height: 100vh;
+    background: #3e5b36;
+    transition: transform 0.35s ease;
+    z-index: 99;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-check:checked ~ .nav-container {
+    transform: translateX(0);
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .nav li { list-style: none; }
+
+  .nav a {
+    display: block;
+    padding: 14px 24px;
+    color: #c8dfc4;
+    font-size: 15px;
+    border-bottom: 0.5px solid #4a6e3a;
+    transition: background 0.2s;
+  }
+
+  .nav a:hover {
+    background: #4a6e3a;
+    color: #fff;
+  }
+  
+  /* COLECCIÓN */
+  .colecion { min-width: unset; width: 95%; padding: 1rem; }
+  .colecion h2 { font-size: 2rem; }
+  .tarjeta { display: block; width: 90%; margin: 15px auto; height: auto; }
+
+  /* RESEÑAS */
+  .grid-resenas { grid-template-columns: 1fr; }
+
+  /* FORMULARIO */
+  .formulario { width: 95%; }
+
+  /* HERO */
+  .hero { padding: 0 20px; height: auto; min-height: 300px; }
+  .hero h1 { font-size: 20px; }
+}
+
+/* CELULAR - 375px */
+@media (max-width: 375px) {
+
+  /* HERO */
+  .hero { padding: 0 10px; min-height: 250px; }
+  .hero h1 { font-size: 16px; }
+  .hero p { font-size: 12px; }
+  .btn { padding: 6px 10px; font-size: 11px; }
+
+  /* COLECCIÓN */
+  .colecion { width: 100%; padding: 0.5rem; }
+  .tarjeta { width: 95%; }
+  .tarjeta img { height: 250px; }
+
+  /* RESEÑAS */
+  .resena { padding: 15px 10px; }
+  .resena p { font-size: 13px; }
+
+  /* FORMULARIO */
+  .formulario { width: 100%; border-radius: 0; }
+
+  /* GENERAL */
+  p { font-size: 14px; }
+  h2 { font-size: 1.4rem; }
 }
