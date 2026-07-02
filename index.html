@@ -7,8 +7,10 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="estilos/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="estilos/base.css">
+        <link rel="stylesheet" href="estilos/productos.css">
+        <link rel="stylesheet" href="estilos/index.css">
+
         <!--  ICONOS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
@@ -238,23 +240,7 @@
     
 
         <script>
-            let slides = document.querySelectorAll(".slide");
-            let index = 0;
-
-            function mostrarSlide(i) {
-            slides.forEach(slide => slide.classList.remove("activo"));
-            slides[i].classList.add("activo");
-            }
-
-            document.querySelector(".next").addEventListener("click", () => {
-            index = (index + 1) % slides.length;
-            mostrarSlide(index);
-            });
-
-            document.querySelector(".prev").addEventListener("click", () => {
-            index = (index - 1 + slides.length) % slides.length;
-            mostrarSlide(index);
-            });
+           
         </script>
 
 

@@ -1,0 +1,69 @@
+/* ============================================
+   CONTACTO.CSS - Formulario + validación
+   Usado en contacto.html
+   ============================================ */
+
+.formulario {
+    background-color: #20361996;
+    padding: 20px;
+    width: 300px;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #abd69e;
+    color: #222;
+}
+
+.formulario label {
+    display: block;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #abd69e96;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.formulario button:hover {
+    background-color: #444;
+}
+
+/* Validación JS (Día 1) */
+.texto-error {
+    display: block;
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: -6px;
+    margin-bottom: 8px;
+}
+
+.formulario input.error,
+.formulario textarea.error {
+    border: 1px solid #ff6b6b;
+}
+
+/* ===== TABLET - 768px ===== */
+@media (max-width: 768px) {
+  .formulario { width: 95%; }
+}
+
+/* ===== CELULAR - 375px ===== */
+@media (max-width: 375px) {
+  .formulario { width: 100%; border-radius: 0; }
+}

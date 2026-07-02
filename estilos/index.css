@@ -1,0 +1,172 @@
+/* ============================================
+   INDEX.CSS - Estilos exclusivos de index.html
+   (botón "Ver productos", hero, reseñas)
+   ============================================ */
+
+#btn {
+    display: inline-block;
+    background-color: #abd69e96;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#btn:hover {
+    background-color: #20361996;
+}
+
+/* ===== HERO ===== */
+.hero {
+  width: 90%;
+  max-width: 1200px;
+  height: 500px;
+  margin: 40px auto;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  background-image: url("../img/perchero.jpg");
+  background-size: cover;
+  background-position: center 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero-contenido {
+  position: relative;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  background: white;
+  color: black;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.btn-secundario {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+/* ===== RESEÑAS ===== */
+.resenas {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.resenas h2 {
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.grid-resenas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.resena {
+  background-color: #4a644296;
+  border-radius: 15px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s;
+}
+
+.resena:hover {
+  transform: translateY(-5px);
+}
+
+.resena-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #abd69e;
+  color: #203619;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.estrellas {
+  color: #f4c542;
+  font-size: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+.resena p {
+  font-size: 14px;
+  color: #ddd;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.resena-nombre {
+  font-weight: 700;
+  color: #abd69e;
+  font-size: 14px;
+}
+
+.resena-producto {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ===== TABLET - 768px ===== */
+@media (max-width: 768px) {
+  .grid-resenas { grid-template-columns: 1fr; }
+  .hero { padding: 0 20px; height: auto; min-height: 300px; }
+  .hero h1 { font-size: 20px; }
+}
+
+/* ===== CELULAR - 375px ===== */
+@media (max-width: 375px) {
+  .hero { padding: 0 10px; min-height: 250px; }
+  .hero h1 { font-size: 16px; }
+  .hero p { font-size: 12px; }
+  .btn { padding: 6px 10px; font-size: 11px; }
+}

@@ -1,0 +1,192 @@
+/* ============================================
+   BASE.CSS - Estilos globales
+   Usado en TODAS las páginas (index, tienda, contacto)
+   ============================================ */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #abd69e96;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* empuja el footer hacia abajo */
+}
+
+h2 {
+    color: #fff;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* Banner de introducción (usado en index y tienda) */
+.introduccion {
+    background-color: #3e5b3696;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* ===== HEADER Y NAV ===== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    position: relative;
+}
+
+.logo {
+    width: 100px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #20361996;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #4a644296;
+    font-weight: 700;
+}
+
+.nav a:hover {
+    color: #555;
+}
+
+/* nav centrado solo en desktop */
+@media (min-width: 769px) {
+  .nav-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Menú responsive sin JS (checkbox hack) */
+.menu-check {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.icon-bar {
+    width: 28px;
+    height: 3px;
+    background: #abd69e96;
+}
+
+/* ===== FOOTER ===== */
+footer,
+.footer-tienda {
+    background: #4a644296;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ===== TABLET - 768px ===== */
+@media (max-width: 768px) {
+  header { flex-wrap: wrap; }
+  .menu-toggle { display: flex; }
+
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s;
+    z-index: 98;
+  }
+
+  .menu-check:checked ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+    width: 220px;
+    height: 100vh;
+    background: #3e5b36;
+    transition: transform 0.35s ease;
+    z-index: 99;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-check:checked ~ .nav-container {
+    transform: translateX(0);
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .nav li { list-style: none; }
+
+  .nav a {
+    display: block;
+    padding: 14px 24px;
+    color: #c8dfc4;
+    font-size: 15px;
+    border-bottom: 0.5px solid #4a6e3a;
+    transition: background 0.2s;
+  }
+
+  .nav a:hover {
+    background: #4a6e3a;
+    color: #fff;
+  }
+}
+
+/* ===== CELULAR - 375px ===== */
+@media (max-width: 375px) {
+  p { font-size: 14px; }
+  h2 { font-size: 1.4rem; }
+}

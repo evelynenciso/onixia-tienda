@@ -1,0 +1,157 @@
+/* ============================================
+   PRODUCTOS.CSS - Tarjetas de producto
+   Usado en index.html Y tienda.html
+   ============================================ */
+
+.colecion {
+    width: 90%;
+    max-width: 1100px;
+    min-width: 800px;
+    margin: 20px auto;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    border: 3px solid #4a644296;
+    border-radius: 20px;
+}
+
+.colecion h2 {
+    font-size: 4vw;
+}
+
+.titulo-colecion {
+    color: #4a644296;
+    background: transparent;
+    padding: 0;
+}
+
+.contenido-colecion {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.texto-colecion {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555555;
+}
+
+.tarjetas {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    width: 30%;
+    object-fit: cover;
+    min-width: 250px;
+    margin: 1%;
+    padding: 1.5rem;
+    background-color: #4a644296;
+    border: 2px solid #4a644296;
+    overflow: hidden;
+    transition: transform 0.3s;
+    border-radius: 20px;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+}
+
+.tarjeta img {
+    width: 100%;
+    max-width: 250px;
+    height: 350px;
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    font-size: 14px;
+    color: #333;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.precio {
+    background-color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #2d6a4f;
+}
+
+button {
+    background-color: #536d4a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tarjeta h3 {
+    font-size: 1.4rem;
+    margin: 0 auto 10px;
+    color: white;
+    text-align: center;
+}
+
+.tarjeta p {
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+
+.tarjeta .descripcion {
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.tarjeta span {
+    font-weight: bold;
+    color: #4a644296;
+}
+
+.icono {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ff9800;
+}
+
+.tarjeta-uno { background-color: #abd69e96; }
+.tarjeta-dos { background-color: #abd69e96; }
+.tarjeta-dos p { font-size: 1.1em; }
+.tarjeta-tres { background-color: #abd69e96; }
+
+.texto-largo {
+    height: 100px;
+    padding-right: 10px;
+    overflow: auto;
+}
+
+/* ===== TABLET - 768px ===== */
+@media (max-width: 768px) {
+  .colecion { min-width: unset; width: 95%; padding: 1rem; }
+  .colecion h2 { font-size: 2rem; }
+  .tarjeta { display: block; width: 90%; margin: 15px auto; height: auto; }
+}
+
+/* ===== CELULAR - 375px ===== */
+@media (max-width: 375px) {
+  .colecion { width: 100%; padding: 0.5rem; }
+  .tarjeta { width: 95%; }
+  .tarjeta img { height: 250px; }
+}
