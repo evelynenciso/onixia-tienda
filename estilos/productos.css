@@ -142,6 +142,30 @@ button {
     overflow: auto;
 }
 
+.filtros {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.filtro-btn {
+  padding: 8px 20px;
+  border: 2px solid #7c9070;
+  background-color: transparent;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  color: #7c9070;
+}
+
+.filtro-btn.activo,
+.filtro-btn:hover {
+  background-color: #7c9070;
+  color: white;
+}
+
 /* ===== TABLET - 768px ===== */
 @media (max-width: 768px) {
   .colecion { min-width: unset; width: 95%; padding: 1rem; }
