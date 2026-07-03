@@ -28,6 +28,8 @@
         <span class="icon-bar"></span>
       </label>
 
+      <label for="menu-check" class="nav-overlay"></label>
+
       <nav class="nav-container">
         <ul class="nav">
           <li><a href="../index.html">Home</a></li>
@@ -41,16 +43,19 @@
     <main>
       <section class="contacto">
         <h2>Contactanos</h2>
-        <form class="formulario" action="https://formspree.io/f/xeenwanb" method="POST">
+        <form class="formulario" id="form-contacto" action="https://formspree.io/f/xeenwanb" method="POST">
 
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" name="nombre" required>
+          <span class="texto-error"></span>
 
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required>
+          <span class="texto-error"></span>
 
           <label for="mensaje">Mensaje</label>
           <textarea id="mensaje" name="mensaje" required></textarea>
+          <span class="texto-error"></span>
 
           <label class="checkbox">
             <input type="checkbox" name="terminos" required>
@@ -66,6 +71,8 @@
     <footer>
       <p>© 2026 ONIXIA. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="../js/validacion.js"></script>
   </body>
 
 
