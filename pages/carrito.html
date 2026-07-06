@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../img/OnixiaCirculo.png">
+
+  <link rel="stylesheet" href="../estilos/base.css">
+  <link rel="stylesheet" href="../estilos/carrito.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>ONIXIA | Carrito</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">
+      <a href="../index.html">
+        <img src="../img/OnixiaCirculo.png" alt="logo principal" class="logo">
+      </a>
+      <span class="brand-name">ONIXIA</span>
+    </div>
+
+    <input type="checkbox" id="menu-check" class="menu-check">
+    <label for="menu-check" class="menu-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </label>
+
+    <label for="menu-check" class="nav-overlay"></label>
+
+    <nav class="nav-container">
+      <ul class="nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="carrito.html">Carrito <span id="contador-carrito">0</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="carrito-seccion">
+      <h2>Tu carrito</h2>
+
+      <p id="carrito-vacio" style="display:none;">Tu carrito está vacío. ¡Andá a la tienda y agregá algo!</p>
+
+      <table class="tabla-carrito">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody id="carrito-body">
+          <!-- JS inserta las filas acá -->
+        </tbody>
+      </table>
+
+      <div class="total-carrito">
+        <span>Total:</span>
+        <span id="total-general">$0</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-tienda">
+    <p>© 2026 ONIXIA. Todos los derechos reservados.</p>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script src="../js/carrito.js"></script>
+</body>
+
+</html>

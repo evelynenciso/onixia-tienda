@@ -9,15 +9,22 @@ let todosLosProductos = [];
 // ==== Función que pide los productos a la API ====
 async function cargarProductos() {
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL, { cache: "no-store" });
 
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`);
     }
 
     const productos = await response.json();
-    todosLosProductos = productos; // guardamos todo en la variable global
-    mostrarProductos(todosLosProductos); // mostramos todo al principio (sin filtro)
+
+    // Si la API no trae "id", le asignamos uno usando la posición en el array
+    const productosConId = productos.map((producto, index) => ({
+      ...producto,
+      id: producto.id ?? String(index)
+    }));
+
+    todosLosProductos = productosConId;
+    mostrarProductos(todosLosProductos);
 
   } catch (error) {
     console.error("Error al cargar productos:", error);
@@ -50,6 +57,17 @@ function mostrarProductos(productos) {
     `;
 
     container.appendChild(card);
+
+    
+  
+
+    // NUEVO: conectamos el botón de esta card con el carrito
+    card.querySelector(".btn-agregar").addEventListener("click", () => {
+      agregarAlCarrito(producto);
+      mostrarToast(producto.name);
+    });
+
+
   });
 }
 
@@ -82,3 +100,26 @@ document.querySelectorAll(".filtro-btn").forEach(boton => {
 
 // ==== Ejecutamos todo al cargar la página ====
 cargarProductos();
+
+function mostrarToast(nombreProducto) {
+  const container = document.getElementById("toast-container");
+
+  if (!container) return; // 👈 evita que rompa todo
+
+  const toast = document.createElement("div");
+  toast.classList.add("toast", "exito");
+
+  toast.innerHTML = `
+    <div class="toast-icon">🛒</div>
+    <div>
+      <strong>${nombreProducto}</strong>
+      <small>Agregado al carrito</small>
+    </div>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
