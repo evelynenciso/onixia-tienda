@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" href="../estilos/base.css">
         <link rel="stylesheet" href="../estilos/productos.css">
+        <link rel="stylesheet" href="../estilos/index.css">
 
      <!--  ICONOS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -78,11 +79,43 @@
             <p>© 2026 ONIXIA. Todos los derechos reservados.</p>
         </footer>
 
-
         <div id="toast-container"></div>
+
+        <!-- MODAL DESCRIPCIÓN PRODUCTO -->
+        <div id="modal-overlay" class="modal-overlay">
+            <div class="modal-contenido">
+                <button id="btn-cerrar-modal" class="btn-cerrar-modal">✕</button>
+
+                <div class="modal-imagen-wrap">
+                    <button id="modal-img-prev" class="modal-img-nav prev" aria-label="Imagen anterior">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <img id="modal-imagen" src="" alt="">
+                    <button id="modal-img-next" class="modal-img-nav next" aria-label="Imagen siguiente">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <h3 id="modal-nombre"></h3>
+                <p id="modal-descripcion"></p>
+                <div class="modal-footer">
+                <span id="modal-precio" class="modal-precio"></span>
+
+                    <button id="modal-btn-agregar" class="btn-agregar">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <button id="btn-subir" aria-label="Volver arriba">
+         <i class="fa-solid fa-arrow-up"></i>
+        </button>
+        
         
         <script src="../js/carrito.js"></script>
         <script src="../js/productos.js"></script>
+        <script src="js/coleccion.js"></script>
       
     </body>
 

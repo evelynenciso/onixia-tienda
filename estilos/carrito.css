@@ -1,73 +1,328 @@
+/* ============================================================
+   CARRITO — variables de color (tocá solo esto para cambiar tono)
+   ============================================================ */
+:root {
+  --verde-oscuro: #536d4a;
+  --verde-oscuro-hover: #435a3b;
+  --verde-claro: #d9e8ca;
+  --bg-pagina: #f3f7ee;
+  --tarjeta: #ffffff;
+  --borde: #e5e5e0;
+  --texto: #2b2b28;
+  --texto-muted: #8a8f84;
+  --rojo-eliminar: #c0392b;
+}
+
+/* ============================================================
+   ESTRUCTURA GENERAL
+   ============================================================
+   Estructura esperada de cada item que inserta el JS dentro de
+   #carrito-lista:
+
+   <div class="carrito-item" data-id="ID_PRODUCTO">
+     <img src="..." alt="..." class="carrito-img">
+     <div class="carrito-item-info">
+       <span class="carrito-item-tienda">ONIXIA</span>
+       <span class="carrito-item-nombre">Remera Premium</span>
+     </div>
+     <div class="carrito-item-cantidad">
+       <button class="btn-cant btn-menos" aria-label="Restar">−</button>
+       <input type="number" class="input-cantidad" value="1" min="1">
+       <button class="btn-cant btn-mas" aria-label="Sumar">+</button>
+     </div>
+     <span class="carrito-item-precio">$7000.00</span>
+     <button class="btn-eliminar" aria-label="Eliminar">
+       <i class="fa-solid fa-xmark"></i>
+     </button>
+   </div>
+   ============================================================ */
+
 .carrito-seccion {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 3rem auto;
   padding: 0 1rem;
 }
 
-.carrito-seccion h2 {
+.carrito-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: var(--tarjeta);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* ---------- Panel izquierdo: lista de productos ---------- */
+
+.carrito-panel {
+  flex: 1 1 65%;
+  padding: 2rem;
+  min-width: 0; /* clave para que no reviente el flex en mobile */
+}
+
+.carrito-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--borde);
+  padding-bottom: 1rem;
 }
 
-.tabla-carrito {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
+.carrito-panel-header h2 {
+  font-size: 1.5rem;
+  color: var(--texto);
+  margin: 0;
 }
 
-.tabla-carrito th,
-.tabla-carrito td {
-  padding: 0.8rem;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.tabla-carrito th {
-  background-color: #f5f5f5;
-  text-transform: uppercase;
+.items-count {
   font-size: 0.85rem;
+  color: var(--texto-muted);
+}
+
+#carrito-vacio {
+  text-align: center;
+  padding: 2rem;
+  color: var(--texto-muted);
+}
+
+.carrito-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.carrito-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.carrito-item:last-child {
+  border-bottom: none;
 }
 
 .carrito-img {
   width: 60px;
   height: 60px;
   object-fit: cover;
+  border-radius: 8px;
+  background: var(--verde-claro);
+}
+
+.carrito-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.carrito-item-tienda {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  letter-spacing: 0.03em;
+}
+
+.carrito-item-nombre {
+  font-weight: 600;
+  color: var(--texto);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carrito-item-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-pagina);
+  border-radius: 8px;
+  padding: 0.25rem 0.4rem;
+}
+
+.btn-cant {
+  background: none;
+  border: none;
+  width: 22px;
+  height: 22px;
   border-radius: 6px;
+  color: var(--verde-oscuro);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-cant:hover {
+  background: var(--verde-claro);
 }
 
 .input-cantidad {
-  width: 60px;
-  padding: 0.3rem;
+  width: 32px;
+  border: none;
+  background: transparent;
   text-align: center;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.carrito-item-precio {
+  font-weight: 700;
+  color: var(--texto);
+  white-space: nowrap;
 }
 
 .btn-eliminar {
   background: none;
   border: none;
-  color: #c0392b;
+  color: var(--texto-muted);
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  padding: 0.3rem;
 }
 
 .btn-eliminar:hover {
-  color: #e74c3c;
+  color: var(--rojo-eliminar);
 }
 
-.total-carrito {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  font-size: 1.3rem;
-  font-weight: bold;
+.volver-tienda {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: var(--texto-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 
-#carrito-vacio {
-  text-align: center;
+.volver-tienda:hover {
+  color: var(--verde-oscuro);
+}
+
+/* ---------- Panel derecho: resumen ---------- */
+
+.carrito-resumen {
+  flex: 1 1 35%;
+  background: var(--bg-pagina);
   padding: 2rem;
-  color: #777;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.carrito-resumen h3 {
+  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  color: var(--texto);
+}
+
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--borde);
+  margin-bottom: 1.2rem;
+}
+
+.resumen-fila span:last-child {
+  color: var(--texto);
+  font-weight: 600;
+  text-transform: none;
+}
+
+.resumen-bloque {
+  margin-bottom: 1.2rem;
+}
+
+.resumen-bloque label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
+}
+
+.envio-select {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background: var(--tarjeta);
+  color: var(--texto);
+  font-size: 0.9rem;
+}
+
+.codigo-input-wrap {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background: var(--tarjeta);
+  overflow: hidden;
+}
+
+.codigo-input-wrap input {
+  flex: 1;
+  border: none;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--texto);
+  min-width: 0;
+}
+
+.codigo-input-wrap input:focus {
+  outline: none;
+}
+
+.codigo-input-wrap button {
+  border: none;
+  background: var(--verde-oscuro);
+  color: white;
+  width: 42px;
+  cursor: pointer;
+}
+
+.codigo-input-wrap button:hover {
+  background: var(--verde-oscuro-hover);
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--texto);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.btn-finalizar {
+  background-color: var(--verde-oscuro);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-finalizar:hover {
+  background-color: var(--verde-oscuro-hover);
 }
 
 #contador-carrito {
-  background: #c0392b;
+  background: var(--verde-oscuro);
   color: #fff;
   font-size: 0.75rem;
   padding: 0.1rem 0.4rem;
@@ -75,16 +330,97 @@
   margin-left: 0.3rem;
 }
 
-/* ===== TABLET - 768px ===== */
-@media (max-width: 768px) {
-  .grid-resenas { grid-template-columns: 1fr; }
-  .hero { padding: 0 20px; height: auto; min-height: 300px; }
-  .hero h1 { font-size: 20px; }
+body {
+  background: var(--bg-pagina);
 }
 
-/* ===== CELULAR - 375px ===== */
-@media (max-width: 375px) {
-  .hero { padding: 0 10px; min-height: 250px; }
-  .hero h1 { font-size: 16px; }
-  .hero p { font-size: 12px; }
-  .btn { padding: 6px 10px; font-size: 11px; }
+#modal-compra {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nunca dejamos que algo empuje toda la página de costado */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ===== TABLET: apilamos resumen debajo del carrito ===== */
+@media (max-width: 900px) {
+
+  .carrito-layout {
+    flex-direction: column;
+    border-radius: 14px;
+  }
+
+  .carrito-panel,
+  .carrito-resumen {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .carrito-resumen {
+    border-top: 1px solid var(--borde);
+  }
+}
+
+/* ===== CELULAR: cada item se reacomoda en 2 líneas ===== */
+@media (max-width: 560px) {
+
+  .carrito-seccion {
+    margin: 1.5rem auto;
+    padding: 0 0.6rem;
+  }
+
+  .carrito-panel,
+  .carrito-resumen {
+    padding: 1.2rem;
+  }
+
+  .carrito-panel-header h2 {
+    font-size: 1.25rem;
+  }
+
+  /* El item pasa de una fila de 5 columnas a una grilla de 2 filas */
+  .carrito-item {
+    grid-template-columns: 52px 1fr auto;
+    grid-template-areas:
+      "img info eliminar"
+      "img cantidad precio";
+    row-gap: 0.5rem;
+  }
+
+  .carrito-img {
+    grid-area: img;
+    width: 52px;
+    height: 52px;
+    align-self: center;
+  }
+
+  .carrito-item-info {
+    grid-area: info;
+  }
+
+  .btn-eliminar {
+    grid-area: eliminar;
+    justify-self: end;
+  }
+
+  .carrito-item-cantidad {
+    grid-area: cantidad;
+    justify-self: start;
+  }
+
+  .carrito-item-precio {
+    grid-area: precio;
+    justify-self: end;
+    align-self: center;
+  }
+}

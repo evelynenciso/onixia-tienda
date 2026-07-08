@@ -42,34 +42,138 @@ function mostrarProductos(productos) {
   productos.forEach(producto => {
     const card = document.createElement("article");
     card.className = "tarjeta producto";
-    card.dataset.id = producto.id; // guardamos el id del producto en la tarjeta
+    card.dataset.id = producto.id;
 
     card.innerHTML = `
       <img src="${producto.image}" alt="${producto.name}">
       <h3>${producto.name}</h3>
-      <p class="descripcion">${producto.description}</p>
+      <p class="descripcion">
+      ${producto.description.substring(0, 60)}... 
+      </p>
+
       <div class="footer">
         <span class="precio">$${producto.price}</span>
+
         <button id="btn-agregar-${producto.id}" class="btn-agregar" data-id="${producto.id}">
           <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+
+        <button class="btn-ver-descripcion" data-id="${producto.id}">
+          <i class="fa-solid fa-eye"></i>
         </button>
       </div>
     `;
 
     container.appendChild(card);
 
-    
-  
-
-    // NUEVO: conectamos el botón de esta card con el carrito
+    //  BOTÓN AGREGAR AL CARRITO
     card.querySelector(".btn-agregar").addEventListener("click", () => {
       agregarAlCarrito(producto);
       mostrarToast(producto.name);
     });
 
-
+    //  BOTÓN VER DESCRIPCIÓN (MODAL)
+    card.querySelector(".btn-ver-descripcion").addEventListener("click", () => {
+      abrirModal(producto);
+    });
   });
 }
+
+
+
+// ==== Estado de la galería del modal ====
+let imagenesModalActual = [];
+let indiceModalActual = 0;
+
+// ==== Función ABRIR MODAL ====
+function abrirModal(producto) {
+  document.getElementById("modal-nombre").textContent = producto.name;
+  document.getElementById("modal-descripcion").textContent = producto.description;
+  document.getElementById("modal-precio").textContent = `$${producto.price}`;
+
+  // Armamos el array de imágenes disponibles, descartando las vacías
+  imagenesModalActual = [producto.image, producto.image2, producto.image3]
+    .filter(img => img && img.trim() !== "");
+  indiceModalActual = 0;
+
+  mostrarImagenActiva();
+ 
+
+  // Ocultar las flechas si el producto tiene una sola imagen
+  const hayVarias = imagenesModalActual.length > 1;
+  document.getElementById("modal-img-prev").classList.toggle("oculto", !hayVarias);
+  document.getElementById("modal-img-next").classList.toggle("oculto", !hayVarias);
+
+  const overlay = document.getElementById("modal-overlay");
+  overlay.classList.add("activo");
+
+  document.getElementById("modal-btn-agregar").onclick = () => {
+    agregarAlCarrito(producto);
+    mostrarToast(producto.name);
+    cerrarModal();
+  };
+}
+
+// ==== Mostrar la imagen según el índice actual ====
+function mostrarImagenActiva() {
+  document.getElementById("modal-imagen").src = imagenesModalActual[indiceModalActual];
+
+}
+
+// ==== Avanzar / retroceder con las flechas ====
+function irImagenSiguiente() {
+  if (imagenesModalActual.length <= 1) return;
+  indiceModalActual = (indiceModalActual + 1) % imagenesModalActual.length;
+  mostrarImagenActiva();
+}
+
+function irImagenAnterior() {
+  if (imagenesModalActual.length <= 1) return;
+  indiceModalActual = (indiceModalActual - 1 + imagenesModalActual.length) % imagenesModalActual.length;
+  mostrarImagenActiva();
+}
+
+// ==== Dibujar las miniaturas (si hay más de 1 imagen) ====
+function renderizarMiniaturasModal() {
+  const contenedor = document.getElementById("modal-miniaturas");
+  if (!contenedor) return;
+
+  if (imagenesModalActual.length <= 1) {
+    contenedor.innerHTML = "";
+    contenedor.style.display = "none";
+    return;
+  }
+
+  contenedor.style.display = "flex";
+  contenedor.innerHTML = imagenesModalActual.map((img, i) => `
+    <img src="${img}" class="modal-miniatura ${i === 0 ? "activa" : ""}" data-index="${i}">
+  `).join("");
+
+  contenedor.querySelectorAll(".modal-miniatura").forEach(mini => {
+    mini.addEventListener("click", () => {
+      indiceModalActual = parseInt(mini.dataset.index);
+      mostrarImagenActiva();
+    });
+  });
+}
+
+// ==== Función CERRAR MODAL ====
+function cerrarModal() {
+  document.getElementById("modal-overlay").classList.remove("activo");
+}
+
+// ==== Eventos que solo se conectan una vez al cargar la página ====
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btn-cerrar-modal").addEventListener("click", cerrarModal);
+
+  document.getElementById("modal-overlay").addEventListener("click", (e) => {
+    if (e.target.id === "modal-overlay") cerrarModal(); // cierra si clickeás fuera del cuadro
+  });
+
+  document.getElementById("modal-img-next")?.addEventListener("click", irImagenSiguiente);
+  document.getElementById("modal-img-prev")?.addEventListener("click", irImagenAnterior);
+});
+// ==== HASTA ACA LLEGO LA FUNCION MODAL ====
 
 
 // ==== Función que filtra los productos según la categoría elegida ====
@@ -123,3 +227,4 @@ function mostrarToast(nombreProducto) {
     toast.remove();
   }, 3000);
 }
+

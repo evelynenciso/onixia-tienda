@@ -175,16 +175,196 @@ button {
   margin-left: 0.3rem;
 }
 
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+
 /* ===== TABLET - 768px ===== */
 @media (max-width: 768px) {
-  .colecion { min-width: unset; width: 95%; padding: 1rem; }
-  .colecion h2 { font-size: 2rem; }
-  .tarjeta { display: block; width: 90%; margin: 15px auto; height: auto; }
+
+    .colecion {
+        width: 95%;
+        min-width: unset;
+        padding: 1rem;
+    }
+
+    .colecion h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .texto-colecion {
+        font-size: 1rem;
+    }
+
+
+    /* Productos en 2 columnas */
+    .tarjetas {
+        gap: 15px;
+    }
+
+    .tarjeta {
+        width: 45%;
+        min-width: unset;
+        padding: 1rem;
+        margin: 0;
+    }
+
+
+    .tarjeta img {
+        height: 280px;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+
+    .tarjeta h3 {
+        font-size: 1.2rem;
+    }
+
+
+    .tarjeta p {
+        font-size: 0.9rem;
+    }
+
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    .filtros {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+
+    .filtro-btn {
+        padding: 7px 15px;
+        font-size: 0.9rem;
+    }
+
 }
+
+
 
 /* ===== CELULAR - 375px ===== */
 @media (max-width: 375px) {
-  .colecion { width: 100%; padding: 0.5rem; }
-  .tarjeta { width: 95%; }
-  .tarjeta img { height: 250px; }
+
+
+    .colecion {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+    }
+
+
+    .colecion h2 {
+        font-size: 1.6rem;
+    }
+
+
+    .texto-colecion {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+
+
+    /* Productos en 1 columna */
+    .tarjetas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .tarjeta {
+        width: 95%;
+        min-width: unset;
+        padding: 1rem;
+    }
+
+
+    .tarjeta img {
+        height: 230px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+
+    .tarjeta h3 {
+        font-size: 1.1rem;
+    }
+
+
+    .tarjeta p {
+        font-size: 0.85rem;
+    }
+
+
+    .descripcion {
+        font-size: 0.8rem;
+    }
+
+
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+
+    .precio {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+    }
+
+
+    button {
+        padding: 8px;
+    }
+
+
+
+    /* Filtros en columna */
+    .filtros {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .filtro-btn {
+        width: 80%;
+        text-align: center;
+    }
+
+
+    #contador-carrito {
+        font-size: 0.65rem;
+    }
+
+}
+
+
+
+/* ===== CELULARES MUY CHICOS - 320px ===== */
+@media (max-width: 320px) {
+
+
+    .tarjeta img {
+        height: 200px;
+    }
+
+
+    .colecion h2 {
+        font-size: 1.4rem;
+    }
+
+
+    .filtro-btn {
+        width: 90%;
+    }
+
 }

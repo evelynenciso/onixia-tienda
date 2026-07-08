@@ -67,6 +67,12 @@
   margin-left: 0.3rem;
 }
 
+/* --- ERRORES DE FORMULARIO --- */
+.input-error {
+  border: 2px solid red !important;
+}
+
+
 /* ===== TABLET - 768px ===== */
 @media (max-width: 768px) {
   .formulario { width: 95%; }

@@ -165,6 +165,38 @@
   margin-left: 0.3rem;
 }
 
+#btn-subir {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #536d4a;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, opacity 0.3s ease;
+  z-index: 999;
+}
+
+#btn-subir.visible {
+  display: flex;
+}
+
+#btn-subir:hover {
+  background: #435a3b;
+}
+
+
+
+
+
 /* ===== TABLET - 768px ===== */
 @media (max-width: 768px) {
   .grid-resenas { grid-template-columns: 1fr; }

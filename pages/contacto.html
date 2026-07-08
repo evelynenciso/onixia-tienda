@@ -46,22 +46,49 @@
         <h2>Contactanos</h2>
         <form class="formulario" id="form-contacto" action="https://formspree.io/f/xeenwanb" method="POST">
 
+          <h3>Información personal</h3>
+
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" required>
+          <input type="text" id="nombre" name="nombre">
           <span class="texto-error"></span>
 
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email">
+          <span class="texto-error"></span>
+
+          <label for="telefono">Teléfono (opcional)</label>
+          <input type="tel" id="telefono" name="telefono">
+          <span class="texto-error"></span>
+
+          <h3>Consulta</h3>
+
+          <label for="tipo">Tipo de consulta</label>
+          <select id="tipo" name="tipo">
+            <option value="">Seleccionar</option>
+            <option value="compra">Consulta sobre compra</option>
+            <option value="envio">Envíos</option>
+            <option value="devolucion">Devoluciones</option>
+            <option value="otro">Otro</option>
+          </select>
+          <span class="texto-error"></span>
+
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto">
           <span class="texto-error"></span>
 
           <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" required></textarea>
+          <textarea id="mensaje" name="mensaje"></textarea>
           <span class="texto-error"></span>
 
           <label class="checkbox">
-            <input type="checkbox" name="terminos" required>
+            <input type="checkbox" id="terminos" name="terminos">
             Acepto los términos y condiciones
           </label>
+          <span class="texto-error"></span>
+
+          <!-- Formspree PRO -->
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde ONIXIA">
+          <input type="hidden" name="_next" value="gracias.html">
 
           <button type="submit">Enviar</button>
 
@@ -74,6 +101,7 @@
     </footer>
 
     <script src="../js/validacion.js"></script>
+    <script src="../js/carrito.js"></script>
   </body>
 
 

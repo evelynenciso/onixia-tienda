@@ -235,6 +235,186 @@ footer p {
   }
 }
 
+/* ===== MODAL DESCRIPCIÓN PRODUCTO ===== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-overlay.activo {
+  display: flex;
+}
+
+.modal-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+
+  background-color: #e5e5e5;
+  border: 2px solid #4a644296;
+  border-radius: 20px;
+
+  position: relative;
+  text-align: center;
+}
+
+.modal-contenido img {
+  width: 100%;
+  max-width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-contenido h3 {
+  color: #536d4a;
+  font-weight: 600;
+}
+
+.modal-contenido p {
+  color: #585858;
+}
+ 
+
+.modal-precio {
+  background-color: #536d4a; /* mismo color que el botón */
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white; /* para que contraste */
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.modal-footer .btn-agregar {
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.modal-miniaturas {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  justify-content: center;
+}
+
+.modal-miniatura {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid transparent;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-miniatura:hover {
+  opacity: 0.9;
+}
+
+.modal-miniatura.activa {
+  opacity: 1;
+  border-color: #536d4a;
+}
+
+.modal-imagen-wrap {
+  position: relative;
+}
+
+.modal-img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.modal-img-nav.prev { left: 10px; }
+.modal-img-nav.next { right: 10px; }
+
+.modal-img-nav:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal-img-nav.oculto {
+  display: none;
+}
+
+
+.btn-cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000000; 
+}
+
+/* ===== HASTA ACA LLEGA MODAL===== */
+
+#btn-subir {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #536d4a;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease, opacity 0.3s ease;
+  z-index: 999;
+}
+
+#btn-subir.visible {
+  display: flex;
+}
+
+#btn-subir:hover {
+  background: #435a3b;
+}
+
+
+
 /* ===== CELULAR - 375px ===== */
 @media (max-width: 375px) {
   p { font-size: 14px; }

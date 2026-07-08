@@ -11,27 +11,30 @@ const correoValido = (correo) => {
 
 // --- Mostrar/ocultar estado de error en un campo ---
 const mostrarEstadoCampo = (input, esValido, mensaje = "") => {
-    const contenedorPadre = input.parentNode; // el div/label que envuelve al input
-    let textoError = contenedorPadre.querySelector(".texto-error");
+    let textoError = input.nextElementSibling;
 
     if (esValido) {
-        contenedorPadre.classList.remove("error");
+        input.classList.remove("input-error"); //  AGREGAR msj
         if (textoError) textoError.textContent = "";
     } else {
-        contenedorPadre.classList.add("error");
+        input.classList.add("input-error"); //  AGREGAR msj
         if (textoError) textoError.textContent = mensaje;
     }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.getElementById("form-contacto");
-    if (!formulario) return; // si no estamos en contacto.html, no hace nada
+    if (!formulario) return;
 
     const inputNombre = document.getElementById("nombre");
     const inputEmail = document.getElementById("email");
+    const inputTelefono = document.getElementById("telefono");
+    const inputTipo = document.getElementById("tipo");
+    const inputAsunto = document.getElementById("asunto");
     const inputMensaje = document.getElementById("mensaje");
+    const inputTerminos = document.getElementById("terminos");
 
-    // --- Autocompletar con datos guardados en LocalStorage ---
+    // --- Autocompletar con LocalStorage ---
     const datosGuardados = JSON.parse(localStorage.getItem("onixia_contacto"));
     if (datosGuardados) {
         inputNombre.value = datosGuardados.nombre || "";
@@ -42,15 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener("submit", (e) => {
         let formularioValido = true;
 
-        // Nombre
-        if (inputNombre.value.trim() === "") {
-            mostrarEstadoCampo(inputNombre, false, "Por favor, ingresá tu nombre.");
+        // NOMBRE
+        if (inputNombre.value.trim().length < 3) {
+            mostrarEstadoCampo(inputNombre, false, "El nombre debe tener al menos 3 caracteres.");
             formularioValido = false;
         } else {
             mostrarEstadoCampo(inputNombre, true);
         }
 
-        // Email
+        // EMAIL
         if (inputEmail.value.trim() === "") {
             mostrarEstadoCampo(inputEmail, false, "El email es obligatorio.");
             formularioValido = false;
@@ -61,21 +64,53 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarEstadoCampo(inputEmail, true);
         }
 
-        // Mensaje
-        if (inputMensaje.value.trim() === "") {
-            mostrarEstadoCampo(inputMensaje, false, "Escribí tu mensaje.");
+        // TELÉFONO (opcional)
+        if (inputTelefono.value.trim() !== "" && isNaN(inputTelefono.value)) {
+            mostrarEstadoCampo(inputTelefono, false, "El teléfono debe contener solo números.");
+            formularioValido = false;
+        } else {
+            mostrarEstadoCampo(inputTelefono, true);
+        }
+
+        // TIPO DE CONSULTA
+        if (inputTipo.value === "") {
+            mostrarEstadoCampo(inputTipo, false, "Seleccioná un tipo de consulta.");
+            formularioValido = false;
+        } else {
+            mostrarEstadoCampo(inputTipo, true);
+        }
+
+        // ASUNTO
+        if (inputAsunto.value.trim().length < 3) {
+            mostrarEstadoCampo(inputAsunto, false, "El asunto es muy corto.");
+            formularioValido = false;
+        } else {
+            mostrarEstadoCampo(inputAsunto, true);
+        }
+
+        // MENSAJE
+        if (inputMensaje.value.trim().length < 5) {
+            mostrarEstadoCampo(inputMensaje, false, "Escribí un mensaje más detallado.");
             formularioValido = false;
         } else {
             mostrarEstadoCampo(inputMensaje, true);
         }
 
-        // Si algo falló, frenamos el envío (a Formspree)
+        // TÉRMINOS
+        if (!inputTerminos.checked) {
+            mostrarEstadoCampo(inputTerminos, false, "Debés aceptar los términos.");
+            formularioValido = false;
+        } else {
+            mostrarEstadoCampo(inputTerminos, true);
+        }
+
+        // SI FALLA
         if (!formularioValido) {
             e.preventDefault();
             return;
         }
 
-        // Si todo está OK, guardamos nombre y email para la próxima visita
+        // GUARDAR DATOS
         localStorage.setItem(
             "onixia_contacto",
             JSON.stringify({
@@ -83,6 +118,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 email: inputEmail.value.trim(),
             })
         );
-        // No hacemos preventDefault: el form sigue su envío normal a Formspree
+
+        // Opcional: feedback visual
+        mostrarToast("Mensaje enviado correctamente 🎉");
     });
 });
+
+// --- TOAST ---
+function mostrarToast(mensaje) {
+    const toast = document.createElement("div");
+    toast.textContent = mensaje;
+    toast.classList.add("toast");
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}

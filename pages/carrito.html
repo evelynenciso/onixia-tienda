@@ -43,30 +43,68 @@
 
   <main>
     <section class="carrito-seccion">
-      <h2>Tu carrito</h2>
 
-      <p id="carrito-vacio" style="display:none;">Tu carrito está vacío. ¡Andá a la tienda y agregá algo!</p>
+      <div class="carrito-layout">
 
-      <table class="tabla-carrito">
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody id="carrito-body">
-          <!-- JS inserta las filas acá -->
-        </tbody>
-      </table>
+        <!-- Columna izquierda: lista de productos -->
+        <div class="carrito-panel">
 
-      <div class="total-carrito">
-        <span>Total:</span>
-        <span id="total-general">$0</span>
+          <div class="carrito-panel-header">
+            <h2>Tu carrito</h2>
+            <span id="items-count-label" class="items-count">0 items</span>
+          </div>
+
+          <p id="carrito-vacio" style="display:none;">Tu carrito está vacío. ¡Andá a la tienda y agregá algo!</p>
+
+          <div id="carrito-lista" class="carrito-lista">
+            <!-- JS inserta acá cada .carrito-item -->
+          </div>
+
+          <a href="tienda.html" class="volver-tienda">
+            <i class="fa-solid fa-arrow-left"></i> Volver a la tienda
+          </a>
+        </div>
+
+        <!-- Columna derecha: resumen -->
+        <aside class="carrito-resumen">
+          <h3>Resumen</h3>
+
+          <div class="resumen-fila">
+            <span>ITEMS <span id="resumen-items-count">0</span></span>
+            <span id="resumen-subtotal">$0.00</span>
+          </div>
+
+          <div class="resumen-bloque">
+            <label for="envio-select">ENVÍO</label>
+            <select id="envio-select" class="envio-select">
+              <option value="0">Retiro en tienda — Gratis</option>
+              <option value="1500">Envío estándar — $1500</option>
+              <option value="3000">Envío express — $3000</option>
+            </select>
+          </div>
+
+          <div class="resumen-bloque">
+            <label for="codigo-descuento">CÓDIGO DE DESCUENTO</label>
+            <div class="codigo-input-wrap">
+              <input type="text" id="codigo-descuento" placeholder="Ingresá tu código">
+              <button id="btn-aplicar-codigo" aria-label="Aplicar código">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="resumen-total">
+            <span>Total:</span>
+            <span id="total-general">$0.00</span>
+          </div>
+
+          <button id="btn-finalizar" class="btn-finalizar">
+            Finalizar compra
+          </button>
+        </aside>
+
       </div>
+
     </section>
   </main>
 
@@ -75,6 +113,15 @@
   </footer>
 
   <div id="toast-container"></div>
+
+  <!-- MODAL COMPRA 👇 -->
+  <div id="modal-compra" class="modal-overlay">
+    <div class="modal-contenido">
+      <h3 id="estado-compra">Procesando pago...</h3>
+      <p id="mensaje-compra">Por favor esperá...</p>
+    </div>
+  </div>
+
   <script src="../js/carrito.js"></script>
 </body>
 
