@@ -205,15 +205,17 @@ button {
     }
 
     .tarjeta {
+        display: flex;
+        flex-direction: column;
         width: 45%;
         min-width: unset;
-        padding: 1rem;
+        padding: 0.8rem;
         margin: 0;
     }
 
 
     .tarjeta img {
-        height: 280px;
+        height: 180px;
         max-width: 100%;
         object-fit: cover;
     }
@@ -229,9 +231,28 @@ button {
     }
 
 
-    .footer {
-        flex-direction: column;
-        gap: 10px;
+  .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        align-items: center;
+        justify-items: center;
+        margin-top: auto;
+    }
+
+    .footer .precio {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .footer button {
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 
@@ -248,7 +269,6 @@ button {
     }
 
 }
-
 
 
 /* ===== CELULAR - 375px ===== */
@@ -282,6 +302,8 @@ button {
 
 
     .tarjeta {
+        display: flex;
+        flex-direction: column;
         width: 95%;
         min-width: unset;
         padding: 1rem;
@@ -289,7 +311,7 @@ button {
 
 
     .tarjeta img {
-        height: 230px;
+        height: 160px;
         width: 100%;
         object-fit: cover;
     }
@@ -311,21 +333,28 @@ button {
 
 
     .footer {
-        flex-direction: row;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        align-items: center;
+        justify-items: center;
+        margin-top: auto;
     }
 
-
-    .precio {
-        font-size: 0.9rem;
-        padding: 5px 10px;
+    .footer .precio {
+        grid-column: 1 / -1;
+        text-align: center;
     }
 
-
-    button {
-        padding: 8px;
+    .footer button {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-
 
 
     /* Filtros en columna */
@@ -348,13 +377,12 @@ button {
 }
 
 
-
 /* ===== CELULARES MUY CHICOS - 320px ===== */
 @media (max-width: 320px) {
 
 
     .tarjeta img {
-        height: 200px;
+        height: 140px;
     }
 
 

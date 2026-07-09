@@ -200,14 +200,34 @@
 /* ===== TABLET - 768px ===== */
 @media (max-width: 768px) {
   .grid-resenas { grid-template-columns: 1fr; }
-  .hero { padding: 0 20px; height: auto; min-height: 300px; }
+  .hero {
+    padding: 0 20px;
+    height: auto;
+    min-height: 300px;
+    align-items: flex-end;
+    padding-bottom: 30px;
+  }
   .hero h1 { font-size: 20px; }
+  .hero-contenido {
+    top: auto;
+    transform: none;
+  }
 }
 
 /* ===== CELULAR - 375px ===== */
 @media (max-width: 375px) {
-  .hero { padding: 0 10px; min-height: 250px; }
+  .hero {
+    padding: 0 10px;
+    min-height: 250px;
+    align-items: flex-end;
+    padding-bottom: 20px;
+  }
   .hero h1 { font-size: 16px; }
   .hero p { font-size: 12px; }
   .btn { padding: 6px 10px; font-size: 11px; }
+  .hero-contenido {
+    top: auto;
+    transform: none;
+  }
+}
 }

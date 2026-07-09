@@ -4,12 +4,23 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- SEO -->
+    <meta name="description" content="ONIXIA - Contactanos para consultas sobre nuestros productos.">
+    <meta name="keywords" content="ropa, remeras, jeans, moda, tienda online">
+    <meta name="author" content="ONIXIA">
+    <meta property="og:title" content="ONIXIA - Contacto">
+    <meta property="og:description" content="Contactanos para consultas sobre nuestros productos.">
+    <meta property="og:image" content="../img/OnixiaCirculo.png">
+
+    <link rel="icon" type="image/x-icon" href="../img/OnixiaCirculo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../estilos/base.css">
     <link rel="stylesheet" href="../estilos/contacto.css">
-    <title>ONIXIA | Contacto</title>
-  </head>
+
+    <title>ONIXIA - Contacto</title>
+</head>
 
   <body>
 
@@ -35,7 +46,6 @@
           <li><a href="../index.html">Home</a></li>
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="https://www.google.com" target="_blank">Ir a Google</a></li>
           <li><a href="carrito.html">Carrito <span id="contador-carrito">0</span></a></li>
         </ul>
       </nav>
@@ -43,57 +53,100 @@
 
     <main>
       <section class="contacto">
-        <h2>Contactanos</h2>
-        <form class="formulario" id="form-contacto" action="https://formspree.io/f/xeenwanb" method="POST">
+  <h2>Contactanos</h2>
 
-          <h3>Información personal</h3>
+  <div class="contacto-wrapper">
 
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre">
-          <span class="texto-error"></span>
+    <div class="contacto-info">
+      <h3>Hablemos</h3>
+      <p class="contacto-info-sub">Estamos para ayudarte con tu compra.</p>
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email">
-          <span class="texto-error"></span>
+      <div class="contacto-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <p class="contacto-item-label">Ubicación</p>
+          <p class="contacto-item-value">Buenos Aires, Argentina</p>
+        </div>
+      </div>
 
-          <label for="telefono">Teléfono (opcional)</label>
-          <input type="tel" id="telefono" name="telefono">
-          <span class="texto-error"></span>
+      <div class="contacto-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <p class="contacto-item-label">Email</p>
+          <p class="contacto-item-value">contacto@onixia.com</p>
+        </div>
+      </div>
 
-          <h3>Consulta</h3>
+      <div class="contacto-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <p class="contacto-item-label">Whatsapp</p>
+          <p class="contacto-item-value">+54 9 11 0000-0000</p>
+        </div>
+      </div>
 
-          <label for="tipo">Tipo de consulta</label>
-          <select id="tipo" name="tipo">
-            <option value="">Seleccionar</option>
-            <option value="compra">Consulta sobre compra</option>
-            <option value="envio">Envíos</option>
-            <option value="devolucion">Devoluciones</option>
-            <option value="otro">Otro</option>
-          </select>
-          <span class="texto-error"></span>
+      <div class="contacto-redes">
+        <p class="contacto-item-label">Seguinos</p>
+        <div class="contacto-redes-iconos">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
 
-          <label for="asunto">Asunto</label>
-          <input type="text" id="asunto" name="asunto">
-          <span class="texto-error"></span>
+    <form class="formulario" id="form-contacto" action="https://formspree.io/f/xeenwanb" method="POST">
 
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje"></textarea>
-          <span class="texto-error"></span>
+      <h3>Información personal</h3>
 
-          <label class="checkbox">
-            <input type="checkbox" id="terminos" name="terminos">
-            Acepto los términos y condiciones
-          </label>
-          <span class="texto-error"></span>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre">
+      <span class="texto-error"></span>
 
-          <!-- Formspree PRO -->
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde ONIXIA">
-          <input type="hidden" name="_next" value="gracias.html">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+      <span class="texto-error"></span>
 
-          <button type="submit">Enviar</button>
+      <label for="telefono">Teléfono (opcional)</label>
+      <input type="tel" id="telefono" name="telefono">
+      <span class="texto-error"></span>
 
-        </form>
-      </section>
+      <h3>Consulta</h3>
+
+      <label for="tipo">Tipo de consulta</label>
+      <select id="tipo" name="tipo">
+        <option value="">Seleccionar</option>
+        <option value="compra">Consulta sobre compra</option>
+        <option value="envio">Envíos</option>
+        <option value="devolucion">Devoluciones</option>
+        <option value="otro">Otro</option>
+      </select>
+      <span class="texto-error"></span>
+
+      <label for="asunto">Asunto</label>
+      <input type="text" id="asunto" name="asunto">
+      <span class="texto-error"></span>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje"></textarea>
+      <span class="texto-error"></span>
+
+      <label class="checkbox">
+        <input type="checkbox" id="terminos" name="terminos">
+        Acepto los términos y condiciones
+      </label>
+      <span class="texto-error"></span>
+
+      <!-- Formspree PRO -->
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde ONIXIA">
+      <input type="hidden" name="_next" value="gracias.html">
+
+      <button type="submit">Enviar</button>
+
+    </form>
+
+  </div>
+</section>
     </main>
 
     <footer>
